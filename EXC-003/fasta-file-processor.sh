@@ -7,7 +7,7 @@
 for f in $@
 do 
     # get the Number of sequences
-    num_seq=$(grep '>' $f | wc -l)
+    num_seq=$(grep '>' $f | wc -l | awk '{print $1}')
 
     # Get the total length of sequences
     len_seq=$(awk '!/>/{gc_count += gsub(/[AaTtGgCc]/, "")} END {print gc_count}' $f)
